@@ -111,13 +111,3 @@ The application includes error handling for:
 ## License
 
 This project is licensed under the MIT License.
-
-## Acknowledgments
-
-- OpenWeatherMap API for providing weather data
-- Font Awesome for the icons
-- The Node.js and Express.js communities
-
-## Support
-
-For support, please open an issue in the repository or contact the maintainers.

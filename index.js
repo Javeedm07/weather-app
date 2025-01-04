@@ -27,9 +27,24 @@ app.post("/weather", async (req, res) => {
       weatherData: result,
     });
   } catch (error) {
-    console.error("Failed to make request:", error.message);
+    let errorMessage = "An error occurred.";
+
+    if (error.response) {
+      if (error.response.status === 404) {
+        errorMessage = "City not found. Please enter a valid city name.";
+      } else if (error.response.status === 401) {
+        errorMessage = "Unauthorized. Please check your API key.";
+      } else {
+        errorMessage = `API Error: ${error.response.statusText}`;
+      }
+    } else if (error.request) {
+      errorMessage = "Network error. Please check your internet connection.";
+    } else {
+      errorMessage = `Error: ${error.message}`;
+    }
+    console.error("Failed to make request:", errorMessage);
     res.render("index.ejs", {
-      error: error.message,
+      error: errorMessage,
     });
   }
 });

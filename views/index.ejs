@@ -24,7 +24,13 @@
         </form>
       </div>
 
-      <% if (locals.weatherData && typeof weatherData !== 'undefined') { %>
+      <% if(locals.error){ %>
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        <%= error %>
+      </div>
+      <% } %> <% if (locals.weatherData && typeof weatherData !== 'undefined') {
+      %>
       <div class="weather-card">
         <div class="weather-header">
           <h1>
@@ -176,11 +182,6 @@
             </form>
           </div>
         </div>
-      </div>
-      <% } %> <% if(locals.error){ %>
-      <div class="error-message">
-        <i class="fas fa-exclamation-circle"></i>
-        <%= error %>
       </div>
       <% } %>
     </div>
